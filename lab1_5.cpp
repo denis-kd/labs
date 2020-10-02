@@ -16,12 +16,17 @@ struct student {
 
 void famSearch(student* A) {
 	char sp[20];
+	bool flag = false;
 	printf("Введите фамилию студента, запись о котором хотите найти: ");
 	scanf("%s", sp);
 	for(int i = 0; i < ARR_SZ; i++) {
-		if(!stricmp(sp, A[i].famil))
+		if(!stricmp(sp, A[i].famil)) {
 			printf("Cтудент %s %s обучается на факультете %s, номер зачётной книжки %d \n",stud[i].famil,stud[i].name, stud[i].facult,stud[i].Nomzach);
+			flag = true;
+		}
 	}
+	if(!flag)
+		printf("Студенты с такими параметрами не найдены");
 }
 
 void nameSearch(student* A) {
@@ -31,6 +36,9 @@ void nameSearch(student* A) {
 	for(int i = 0; i < ARR_SZ; i++) {
 		if(!stricmp(sp, A[i].name))
 			printf("Cтудент %s %s обучается на факультете %s, номер зачётной книжки %d \n",stud[i].famil,stud[i].name, stud[i].facult,stud[i].Nomzach);
+		else {
+			printf("Студенты с такими параметрами не найдены");
+		}
 	}
 }
 
@@ -41,6 +49,9 @@ void facultSearch(student* A) {
 	for(int i = 0; i < ARR_SZ; i++) {
 		if(!stricmp(sp, A[i].facult))
 			printf("Cтудент %s %s обучается на факультете %s, номер зачётной книжки %d \n",stud[i].famil,stud[i].name, stud[i].facult,stud[i].Nomzach);
+		else {
+			printf("Студенты с такими параметрами не найдены");
+		}
 	}
 }
 
@@ -50,6 +61,9 @@ void nzSearch(student* A) {
 	scanf("%d", &sp);
 	while (sp != A[i].Nomzach) {
 		i++;
+	}
+	if (!i) {
+		printf("Студенты с такими параметрами не найдены");
 	}
 	printf("Cтудент %s %s обучается на факультете %s, номер зачётной книжки %d \n",stud[i].famil,stud[i].name, stud[i].facult,stud[i].Nomzach);
 }
